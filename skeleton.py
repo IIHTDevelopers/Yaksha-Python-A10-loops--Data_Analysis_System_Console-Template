@@ -1,5 +1,4 @@
-# DO NOT MODIFY THE SECTIONS MARKED AS "DO NOT MODIFY"
-# Sample data structures - DO NOT MODIFY
+# DO NOT MODIFY: Sample Data Structures
 sales_data = [
     {"order_id": "A1", "customer_id": "C1", "amount": 100, "status": "completed"},
     {"order_id": "A2", "customer_id": "C2", "amount": 200, "status": "pending"},
@@ -22,103 +21,81 @@ product_inventory = [
 
 def process_sales_data(sales_data):
     """
-    Process sales transactions using FOR loop
-    Return: Dictionary with customer sales data
+    Process sales transactions using FOR loop.
+    Return: Dictionary with customer sales data.
     Example: {"C1": {"total": 1500, "orders": 3}}
     """
-    # Validation - DO NOT MODIFY
-    if not sales_data:
-        return {}
-    if not all(isinstance(sale, dict) for sale in sales_data):
-        raise TypeError("All records must be dictionaries")
-    
-    # TODO: Implement the following using a FOR loop
-    # 1. Create an empty dictionary for customer sales
-    # 2. Loop through sales_data
-    # 3. For each sale, extract customer_id, amount, and status
-    # 4. Validate the data (amount >= 0, valid status)
-    # 5. Add the sale to the customer's total and increment order count
-    # 6. Return dictionary of customer sales
+    # TODO: Implement processing logic using for loop
     pass
 
-def find_top_customers(customer_records):
+def analyze_customer_tiers(customer_records):
     """
-    Analyze customer tiers using WHILE loop
-    Updates customer tiers based on total spent
+    Analyze and update customer tiers using WHILE loop.
+    Tier logic: 
+      - Gold: >= 1000
+      - Silver: >= 500
+      - Bronze: < 500
     """
-    # Validation - DO NOT MODIFY
-    if not customer_records:
-        return {}
-    
-    # TODO: Implement the following using a WHILE loop
-    # 1. Convert customer_records to a list of items
-    # 2. Initialize a counter
-    # 3. Process records while counter < length of customers list
-    # 4. For each customer, validate their data
-    # 5. Update tier based on total_spent (gold: >=1000, silver: >=500, bronze: <500)
-    # 6. Increment counter
-    # 7. Return updated customer records
+    # TODO: Implement while loop to update tier in customer_records
     pass
 
-def process_active_transactions(sales_data):
+def filter_transactions(sales_data):
     """
-    Filter transactions using CONTINUE
-    Skip processing of pending/cancelled orders
+    Filter out only completed transactions using CONTINUE.
+    Return: List of completed sales transactions.
     """
-    # Validation - DO NOT MODIFY
-    if not sales_data:
-        return []
-    
-    # TODO: Implement the following with CONTINUE
-    # 1. Create empty list for completed sales
-    # 2. Loop through sales_data
-    # 3. Use continue to skip non-completed transactions
-    # 4. Add completed transactions to list
-    # 5. Return list of completed transactions
+    # TODO: Use continue to skip non-completed sales
     pass
 
-def validate_inventory(product_inventory):
+def validate_customer_data(customer_records):
     """
-    Validate inventory data using PASS
-    Handle incomplete data fields
+    Validate and return complete customer records using PASS.
+    Handle invalid or incomplete records gracefully.
     """
-    # Validation - DO NOT MODIFY
-    if not product_inventory:
-        return {}
-    
-    # TODO: Implement the following with PASS
-    # 1. Create dictionary for valid inventory items
-    # 2. Loop through inventory
-    # 3. Use try/except block to handle potential errors
-    # 4. Use pass for invalid/incomplete records
-    # 5. Add valid records to the dictionary
-    # 6. Return dictionary of valid inventory items
+    # TODO: Use try-except and pass to skip bad records
     pass
 
-def display_report(processed_data):
-    """Display formatted report data"""
-    # Validation - DO NOT MODIFY
-    if processed_data is None:
-        print("No data to display")
-        return
-    
-    # TODO: Implement the following
-    # 1. Print report header
-    # 2. Check if processed_data is a dictionary
-    # 3. If it is, print column headers
-    # 4. Loop through the data and print each row
-    # 5. If it's not a dictionary, print appropriate message
+def generate_reports(processed_data):
+    """
+    Display formatted report from processed dictionary data.
+    """
+    # TODO: Format the output using dictionary printing
     pass
 
 def main():
-    """Main program execution"""
-    # TODO: Implement the following:
-    # 1. Create a menu loop that continues until user chooses to exit
-    # 2. Display menu options
-    # 3. Get user choice with error handling
-    # 4. Based on choice, call appropriate function and display results
-    # 5. Exit when user selects the exit option
-    pass
+    """
+    Menu-driven console program.
+    """
+    while True:
+        print("\nData Analysis System")
+        print("1. Process Sales Data")
+        print("2. Analyze Customer Tiers")
+        print("3. Filter Transactions")
+        print("4. Validate Customer Data")
+        print("5. Exit")
+        
+        try:
+            choice = int(input("\nEnter your choice (1-5): "))
+
+            if choice == 1:
+                result = process_sales_data(sales_data)
+                generate_reports(result)
+            elif choice == 2:
+                result = analyze_customer_tiers(customer_records.copy())
+                print("\nCustomer Tiers Updated")
+            elif choice == 3:
+                result = filter_transactions(sales_data)
+                print(f"\nCompleted Transactions: {len(result)}")
+            elif choice == 4:
+                result = validate_customer_data(customer_records)
+                print(f"\nValid Customer Records: {len(result)}")
+            elif choice == 5:
+                print("Thank you for using the Data Analysis System!")
+                break
+            else:
+                print("Invalid choice. Please enter a number between 1 and 5.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 if __name__ == "__main__":
     main()
